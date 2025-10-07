@@ -1,7 +1,9 @@
 package com.example.mycollections.controllers;
 
 import com.example.mycollections.models.Album;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,24 +22,5 @@ public class AlbumController {
     public List<Album> getAlbumsJson() { return albums; }
 
     @GetMapping("/html")
-    public String getAlbumsHtml() {
-        String albumList = "<ul>";
-        for (Album album : albums) {
-            albumList += "<li>" + album + "</li>";
-        }
-        albumList += "</ul>";
-
-        return """
-                <html>
-                    <body>
-                        <h1>Albums</h1>
-                        <ul>
-                """ +
-                albumList +
-                """
-                        </ul>
-                    </body>
-                """;
-    }
-
+    public List<Album> getAlbumsHtml() { return albums; }
 }
